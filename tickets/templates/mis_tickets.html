@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mis Tickets</title>
+</head>
+<body>
+    <h2>Mis Tickets</h2>
+
+    <a href="/ticket/crear/">Crear nuevo ticket</a>
+
+    <ul>
+        {% for ticket in tickets %}
+            <li>
+                <a href="/mis-tickets/{{ ticket.id }}/">
+                    <strong>{{ ticket.titulo }}</strong>
+                </a>
+                {{ ticket.categoria.nombre }} -
+                {{ ticket.estado }} -
+                {{ ticket.fecha_creacion }}
+            </li>
+        {% empty %}
+            <li>No tienes tickets aún</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/admin/">Ir al admin</a>
+</body>
+</html>

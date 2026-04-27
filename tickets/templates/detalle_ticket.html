@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle Ticket</title>
+</head>
+<body>
+    <h2>{{ ticket.titulo }}</h2>
+
+    <p><strong>Categoría:</strong> {{ ticket.categoria.nombre }}</p>
+    <p><strong>Estado:</strong> {{ ticket.estado }}</p>
+    <p><strong>Fecha:</strong> {{ ticket.fecha_creacion }}</p>
+
+    <h3>Descripción</h3>
+    <p>{{ ticket.descripcion }}</p>
+
+    <h3>Respuesta del administrador</h3>
+    {% if ticket.respuesta_admin %}
+        <p>{{ ticket.respuesta_admin }}</p>
+    {% else %}
+        <p>No hay respuesta aún</p>
+    {% endif %}
+
+    <a href="/mis-tickets/">Volver</a>
+</body>
+</html>
