@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Ticket, Categoria
 
+
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'usuario', 'categoria', 'estado', 'fecha_creacion')
