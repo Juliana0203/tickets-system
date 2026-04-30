@@ -1,28 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Mis Tickets</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
     <h2>Mis Tickets</h2>
+    <a href="/ticket/crear/" class="btn btn-success">+ Crear Ticket</a>
+</div>
 
-    <a href="/ticket/crear/">Crear nuevo ticket</a>
-
-    <ul>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for ticket in tickets %}
-            <li>
+        <tr>
+            <td>
                 <a href="/mis-tickets/{{ ticket.id }}/">
-                    <strong>{{ ticket.titulo }}</strong>
+                    {{ ticket.titulo }}
                 </a>
-                {{ ticket.categoria.nombre }} -
-                {{ ticket.estado }} -
-                {{ ticket.fecha_creacion }}
-            </li>
+            </td>
+            <td>{{ ticket.categoria.nombre }}</td>
+            <td>
+                <span class="badge bg-secondary">{{ ticket.estado }}</span>
+            </td>
+            <td>{{ ticket.fecha_creacion }}</td>
+        </tr>
         {% empty %}
-            <li>No tienes tickets aún</li>
+        <tr>
+            <td colspan="4" class="text-center">No tienes tickets</td>
+        </tr>
         {% endfor %}
-    </ul>
-
-    <a href="/admin/">Ir al admin</a>
-</body>
-</html>
+    </tbody>
+</table>
+{% endblock %}

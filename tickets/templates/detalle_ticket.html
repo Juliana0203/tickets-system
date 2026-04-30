@@ -1,25 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Detalle Ticket</title>
-</head>
-<body>
-    <h2>{{ ticket.titulo }}</h2>
+{% extends 'base.html' %}
 
-    <p><strong>Categoría:</strong> {{ ticket.categoria.nombre }}</p>
-    <p><strong>Estado:</strong> {{ ticket.estado }}</p>
-    <p><strong>Fecha:</strong> {{ ticket.fecha_creacion }}</p>
+{% block content %}
+<h2>{{ ticket.titulo }}</h2>
 
-    <h3>Descripción</h3>
-    <p>{{ ticket.descripcion }}</p>
+<div class="mb-3">
+    <span class="badge bg-info">{{ ticket.categoria.nombre }}</span>
+    <span class="badge bg-secondary">{{ ticket.estado }}</span>
+</div>
 
-    <h3>Respuesta del administrador</h3>
-    {% if ticket.respuesta_admin %}
-        <p>{{ ticket.respuesta_admin }}</p>
-    {% else %}
-        <p>No hay respuesta aún</p>
-    {% endif %}
+<p><strong>Fecha:</strong> {{ ticket.fecha_creacion }}</p>
 
-    <a href="/mis-tickets/">Volver</a>
-</body>
-</html>
+<div class="card mb-3">
+    <div class="card-body">
+        <h5>Descripción</h5>
+        <p>{{ ticket.descripcion }}</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5>Respuesta del administrador</h5>
+        {% if ticket.respuesta_admin %}
+            <p>{{ ticket.respuesta_admin }}</p>
+        {% else %}
+            <p class="text-muted">No hay respuesta aún</p>
+        {% endif %}
+    </div>
+</div>
+
+<a href="/mis-tickets/" class="btn btn-secondary mt-3">Volver</a>
+{% endblock %}

@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Crear Ticket</title>
-</head>
-<body>
-    <h2>Crear Ticket</h2>
+{% extends 'base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Crear</button>
-    </form>
+{% block content %}
+<h2 class="mb-3">Crear Ticket</h2>
 
-    <a href="/mis-tickets/">Volver a mis tickets</a>
-</body>
-</html>
+<form method="post" class="card card-body">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Crear</button>
+</form>
+{% endblock %}
