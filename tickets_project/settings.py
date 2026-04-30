@@ -119,4 +119,3 @@ STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = '/mis-tickets/'
 LOGOUT_REDIRECT_URL = '/login/'
-LOGIN_REDIRECT_URL = '/mis-tickets/'

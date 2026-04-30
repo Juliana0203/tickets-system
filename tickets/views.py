@@ -4,6 +4,7 @@ from .models import Ticket
 from .forms import TicketForm
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
+from django.contrib.auth import logout
 
 
 @login_required
@@ -30,3 +31,7 @@ def crear_ticket(request):
 def detalle_ticket(request, id_ticket):
     ticket = get_object_or_404(Ticket, id=id_ticket, usuario=request.user)
     return render(request, 'detalle_ticket.html', {'ticket': ticket})
+
+def home(request):
+    logout(request)  
+    return redirect('login')  
