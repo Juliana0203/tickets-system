@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Ticket
 from .forms import TicketForm
 from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 
 
 @login_required
@@ -29,3 +30,9 @@ def crear_ticket(request):
 def detalle_ticket(request, id_ticket):
     ticket = get_object_or_404(Ticket, id=id_ticket, usuario=request.user)
     return render(request, 'detalle_ticket.html', {'ticket': ticket})
+
+def home(request):
+    if request.user.is_authenticated:
+        return redirect('mis_tickets')
+    else:
+        return redirect('login')
